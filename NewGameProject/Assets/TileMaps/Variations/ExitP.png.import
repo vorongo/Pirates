@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdxylsg6nqqj6"
-path="res://.godot/imported/ExitP.png-e59bc7aefd16ab655fb339436917f461.ctex"
+path="res://.godot/imported/ExitP.png-e740ac376217e79a1e09344310e8ceca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Free/Menu/Buttons/ExitP.png"
-dest_files=["res://.godot/imported/ExitP.png-e59bc7aefd16ab655fb339436917f461.ctex"]
+source_file="res://Assets/TileMaps/Variations/ExitP.png"
+dest_files=["res://.godot/imported/ExitP.png-e740ac376217e79a1e09344310e8ceca.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmx0l716jgbp2"
-path="res://.godot/imported/9.png-330b18825df979b74c4e415f26b2d0bf.ctex"
+path="res://.godot/imported/9.png-7d5e80cef91d66e30b30e42b0a378746.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ui/Mobile Buttons/Mobile Buttons Cooldown/9.png"
-dest_files=["res://.godot/imported/9.png-330b18825df979b74c4e415f26b2d0bf.ctex"]
+source_file="res://Assets/ui/Mobile Buttons/Mobile Buttons Cooldown/9.png"
+dest_files=["res://.godot/imported/9.png-7d5e80cef91d66e30b30e42b0a378746.ctex"]
 
 [params]
 

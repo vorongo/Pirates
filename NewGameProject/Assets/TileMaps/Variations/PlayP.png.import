@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bo13jkui1mv3m"
-path="res://.godot/imported/PlayP.png-1d46c4e64d11b93abbbb3dec4ec19033.ctex"
+path="res://.godot/imported/PlayP.png-420342c38406043cc1504ccdf3a39384.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Free/Menu/Buttons/PlayP.png"
-dest_files=["res://.godot/imported/PlayP.png-1d46c4e64d11b93abbbb3dec4ec19033.ctex"]
+source_file="res://Assets/TileMaps/Variations/PlayP.png"
+dest_files=["res://.godot/imported/PlayP.png-420342c38406043cc1504ccdf3a39384.ctex"]
 
 [params]
 

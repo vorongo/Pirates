@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://g6heirfym8xg"
-path="res://.godot/imported/SettingsH.png-9a0cd0b4cc609d33179810982fe057f7.ctex"
+path="res://.godot/imported/SettingsH.png-7b253db26773ef72a1ea4c3cbe8493e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Free/Menu/Buttons/SettingsH.png"
-dest_files=["res://.godot/imported/SettingsH.png-9a0cd0b4cc609d33179810982fe057f7.ctex"]
+source_file="res://Assets/TileMaps/Variations/SettingsH.png"
+dest_files=["res://.godot/imported/SettingsH.png-7b253db26773ef72a1ea4c3cbe8493e2.ctex"]
 
 [params]
 

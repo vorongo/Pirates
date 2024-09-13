@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://brhhjt6dq2iqg"]
+
+[ext_resource type="PackedScene" uid="uid://dlm6wrr6n0g6f" path="res://Assets/ui/menu.tscn" id="1_i207v"]
+[ext_resource type="Script" path="res://Assets/ui/main_menu.gd" id="1_rxr0r"]
+[ext_resource type="PackedScene" uid="uid://demv71ew02bcc" path="res://Assets/ui/options.tscn" id="2_twgsf"]
+[ext_resource type="AudioStream" uid="uid://t3tl8ngvpmad" path="res://Assets/ui/menu sound.mp3" id="4_flltb"]
+
+[node name="main menu" type="Node2D"]
+script = ExtResource("1_rxr0r")
+
+[node name="menu" parent="." instance=ExtResource("1_i207v")]
+position = Vector2(640, 352)
+scale = Vector2(4, 4)
+next_scene = "res://Scenes/Levels/Level0.tscn"
+
+[node name="options" parent="." instance=ExtResource("2_twgsf")]
+visible = false
+position = Vector2(640, 352)
+scale = Vector2(4, 4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_flltb")
+autoplay = true
+
+[connection signal="options_button_pressed" from="menu" to="options" method="_on_menu_options_button_pressed"]
+[connection signal="options_close" from="options" to="menu" method="_on_options_options_close"]

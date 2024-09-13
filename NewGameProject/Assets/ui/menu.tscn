@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlm6wrr6n0g6f"]
+
+[ext_resource type="Script" path="res://Assets/ui/menu.gd" id="1_8bvye"]
+[ext_resource type="Texture2D" uid="uid://brfu6n2jddd6r" path="res://Assets/ui/exit button.png" id="2_3unnh"]
+[ext_resource type="Texture2D" uid="uid://cp6quv6ytsxfv" path="res://Assets/ui/back panel.png" id="3_5l3e2"]
+[ext_resource type="Texture2D" uid="uid://du0161pk7d24u" path="res://Assets/ui/play button.png" id="4_dccnj"]
+[ext_resource type="Texture2D" uid="uid://cl06x1t6la7q6" path="res://Assets/ui/options button.png" id="5_8fwpb"]
+[ext_resource type="Texture2D" uid="uid://c2e53dqy7xbrc" path="res://Assets/ui/levels button.png" id="6_xqi1l"]
+[ext_resource type="Texture2D" uid="uid://xp4njv2jub0h" path="res://Assets/ui/authers button.png" id="7_p8vom"]
+[ext_resource type="Texture2D" uid="uid://dpfx2hf4unho4" path="res://Assets/ui/logo.png" id="8_3jvnn"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_8bvye")
+next_scene = "res://Scenes/Levels/Level0.tscn"
+
+[node name="Exit button" type="TextureButton" parent="."]
+offset_left = 32.0
+offset_top = 19.0
+offset_right = 81.0
+offset_bottom = 36.0
+texture_normal = ExtResource("2_3unnh")
+
+[node name="BackPanel" type="Sprite2D" parent="."]
+texture = ExtResource("3_5l3e2")
+
+[node name="Play button" type="TextureButton" parent="."]
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 16.0
+texture_normal = ExtResource("4_dccnj")
+
+[node name="Options button" type="TextureButton" parent="."]
+offset_left = -33.0
+offset_top = 17.0
+offset_right = -19.0
+offset_bottom = 33.0
+texture_normal = ExtResource("5_8fwpb")
+
+[node name="Levels button" type="TextureButton" parent="."]
+offset_left = -7.0
+offset_top = 17.0
+offset_right = 7.0
+offset_bottom = 33.0
+texture_normal = ExtResource("6_xqi1l")
+
+[node name="Authers button" type="TextureButton" parent="."]
+offset_left = 19.0
+offset_top = 17.0
+offset_right = 33.0
+offset_bottom = 33.0
+texture_normal = ExtResource("7_p8vom")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(1, -26)
+texture = ExtResource("8_3jvnn")
+
+[connection signal="pressed" from="Exit button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Play button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Options button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Levels button" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="Authers button" to="." method="_on_authers_button_pressed"]

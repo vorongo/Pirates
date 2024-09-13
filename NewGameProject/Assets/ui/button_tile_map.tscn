@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg4tqfpxup20j"]
+
+[ext_resource type="Texture2D" uid="uid://bxclwg8bpuoua" path="res://Assets/Ui/Green Button/Green Button (guide).png" id="1_3i3kb"]
+[ext_resource type="Texture2D" uid="uid://nousc41m7fai" path="res://Assets/Ui/Yellow Button/Yellow Button (guide).png" id="2_4mkki"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ha0f8"]
+texture = ExtResource("1_3i3kb")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(14, 14)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+1:2/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hol32"]
+texture = ExtResource("2_4mkki")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(14, 14)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+1:2/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1aw6h"]
+tile_size = Vector2i(14, 14)
+sources/0 = SubResource("TileSetAtlasSource_ha0f8")
+sources/1 = SubResource("TileSetAtlasSource_hol32")
+
+[node name="button tile map" type="TileMapLayer"]
+tile_set = SubResource("TileSet_1aw6h")
