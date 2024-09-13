@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwbp33uxrq78u"]
+
+[ext_resource type="Script" path="res://Scripts/ui/button.gd" id="1_coxwg"]
+[ext_resource type="Texture2D" uid="uid://c5em41dpmn28o" path="res://Assets/Sprites/Free/Menu/Buttons/Play.png" id="2_rh332"]
+[ext_resource type="Texture2D" uid="uid://bo13jkui1mv3m" path="res://Assets/Sprites/Free/Menu/Buttons/PlayP.png" id="3_33c6l"]
+[ext_resource type="Texture2D" uid="uid://c6u8j13tvklj7" path="res://Assets/Sprites/Free/Menu/Buttons/PlayH.png" id="4_r3e5w"]
+[ext_resource type="Texture2D" uid="uid://vgtg42lh1l3a" path="res://Assets/Sprites/Free/Menu/Buttons/Plate.png" id="5_ahrgj"]
+[ext_resource type="AudioStream" uid="uid://cnx7wh14hx0lv" path="res://Assets/Sound/ui/button_klick.mp3" id="6_c4mp8"]
+
+[sub_resource type="Animation" id="Animation_xl740"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x2b0d"]
+resource_name = "_on_button_mouse_entered"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-424, 12), Vector2(408, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pa6ky"]
+resource_name = "on_button_mouse_exited"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(408, 12), Vector2(-424, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cukv5"]
+_data = {
+"RESET": SubResource("Animation_xl740"),
+"_on_button_mouse_entered": SubResource("Animation_x2b0d"),
+"on_button_mouse_exited": SubResource("Animation_pa6ky")
+}
+
+[node name="Button" type="Node2D"]
+script = ExtResource("1_coxwg")
+
+[node name="Button" type="TextureButton" parent="."]
+offset_left = -9.99999
+offset_top = -9.99999
+offset_right = 11.0
+offset_bottom = 12.0
+scale = Vector2(10, 10)
+pivot_offset = Vector2(10.4, 10.4)
+texture_normal = ExtResource("2_rh332")
+texture_pressed = ExtResource("3_33c6l")
+texture_hover = ExtResource("4_r3e5w")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+position = Vector2(408, 12)
+scale = Vector2(10, 10.8571)
+texture = ExtResource("5_ahrgj")
+
+[node name="Label" type="Label" parent="Sprite2D2"]
+anchors_preset = -1
+anchor_left = 0.0253969
+anchor_right = 10.8667
+offset_left = -31.6
+offset_top = -7.0
+offset_right = 2165.4
+offset_bottom = 675.0
+scale = Vector2(0.02, 0.02)
+theme_override_colors/font_color = Color(0.129412, 0.121569, 0.188235, 1)
+theme_override_font_sizes/font_size = 500
+text = "TEXT"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cukv5")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_c4mp8")
+bus = &"Ui"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

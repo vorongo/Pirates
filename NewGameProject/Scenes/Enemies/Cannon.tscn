@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwpt426e1kk7s"]
+
+[ext_resource type="Texture2D" uid="uid://b36dt00jn7d4w" path="res://Assets/Cannon/Cannon Fire/1.png" id="1_mth8n"]
+[ext_resource type="Texture2D" uid="uid://b1yd58lyfs3kc" path="res://Assets/Cannon/Cannon Fire/2.png" id="2_fyogp"]
+[ext_resource type="Texture2D" uid="uid://bmwed54634de5" path="res://Assets/Cannon/Cannon Fire/3.png" id="3_2131w"]
+[ext_resource type="Texture2D" uid="uid://br22s1tactt57" path="res://Assets/Cannon/Cannon Fire/4.png" id="4_h28dk"]
+[ext_resource type="Texture2D" uid="uid://8o0nfi56nev3" path="res://Assets/Cannon/Cannon Fire/5.png" id="5_my1oq"]
+[ext_resource type="Texture2D" uid="uid://d0afvyiprtryt" path="res://Assets/Cannon/Cannon Fire/6.png" id="6_b3vyq"]
+[ext_resource type="Texture2D" uid="uid://wd1xs2e84upr" path="res://Assets/Cannon/Cannon Idle/1.png" id="7_d5n6t"]
+[ext_resource type="Script" path="res://Scripts/CharactersAnimation.gd" id="8_83401"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Cannon/CannonAttack.gd" id="9_r5n27"]
+[ext_resource type="Script" path="res://Scripts/Hp.gd" id="10_a6eaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc05w"]
+size = Vector2(28, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrdqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mth8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fyogp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2131w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h28dk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_my1oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b3vyq")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_d5n6t")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 20.0
+}]
+
+[node name="Cannon" type="CharacterBody2D" groups=["characters", "enemies"]]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_cc05w")
+
+[node name="CharacterAnimation" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("character", "attack", "hp_node")]
+sprite_frames = SubResource("SpriteFrames_hrdqi")
+animation = &"Attack"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("8_83401")
+character = NodePath("..")
+attack = NodePath("../Attack")
+hp_node = NodePath("../HpNode")
+
+[node name="spawner" type="Marker2D" parent="."]
+position = Vector2(-23, 0)
+
+[node name="RayCast" type="RayCast2D" parent="."]
+target_position = Vector2(-37, 0)
+
+[node name="Attack" type="Area2D" parent="." node_paths=PackedStringArray("raycast", "marker", "character")]
+script = ExtResource("9_r5n27")
+raycast = NodePath("../RayCast")
+marker = NodePath("../spawner")
+character = NodePath("..")
+reload_time = 2.0
+
+[node name="HpNode" type="Node" parent="."]
+script = ExtResource("10_a6eaj")

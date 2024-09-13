@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4amw2686825j"]
+
+[ext_resource type="PackedScene" uid="uid://bjb8myyufltce" path="res://Scenes/ui/play_button.tscn" id="1_ut2qd"]
+[ext_resource type="PackedScene" uid="uid://u1ljoawh5dwm" path="res://Scenes/ui/exit_button.tscn" id="2_5cpug"]
+[ext_resource type="PackedScene" uid="uid://b1xf2r80bgfht" path="res://Scenes/ui/options_button.tscn" id="3_ep15g"]
+
+[sub_resource type="GDScript" id="GDScript_xodku"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	$AnimationPlayer.play(\"start_menu\")
+"
+
+[sub_resource type="Animation" id="Animation_7ardc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 112)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 320)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 528)]
+}
+
+[sub_resource type="Animation" id="Animation_l2y3j"]
+resource_name = "start_menu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.633333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-88, 112), Vector2(104, 112), Vector2(128, 112), Vector2(104, 112)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button3:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.633333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-88, 320), Vector2(104, 320), Vector2(128, 320), Vector2(104, 320)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.633333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-88, 528), Vector2(104, 528), Vector2(128, 528), Vector2(104, 528)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ilnbj"]
+_data = {
+"RESET": SubResource("Animation_7ardc"),
+"start_menu": SubResource("Animation_l2y3j")
+}
+
+[node name="menu" type="Node2D"]
+position = Vector2(-8, 24)
+script = SubResource("GDScript_xodku")
+
+[node name="Button" parent="." instance=ExtResource("1_ut2qd")]
+position = Vector2(128, 112)
+
+[node name="Button2" parent="." instance=ExtResource("2_5cpug")]
+position = Vector2(128, 528)
+
+[node name="Button3" parent="." instance=ExtResource("3_ep15g")]
+position = Vector2(128, 320)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ilnbj")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

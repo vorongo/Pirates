@@ -1,0 +1,71 @@
+[gd_scene load_steps=14 format=3 uid="uid://yj6f1s670dp6"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet/BulletMovement.gd" id="1_opfsn"]
+[ext_resource type="Script" path="res://Scripts/Bullet/BulletCollideDelete.gd" id="2_t410k"]
+[ext_resource type="Script" path="res://Scripts/Bullet/BulletDamage.gd" id="3_tfmwf"]
+[ext_resource type="Texture2D" uid="uid://mgf2umep1uo5" path="res://Assets/Cannon/Cannon Ball Explosion/1.png" id="4_2n3t6"]
+[ext_resource type="Texture2D" uid="uid://dsj1c8i4xx1ip" path="res://Assets/Cannon/Cannon Ball Explosion/2.png" id="5_l6f32"]
+[ext_resource type="Texture2D" uid="uid://bdp214lu2hx5" path="res://Assets/Cannon/Cannon Ball Explosion/3.png" id="6_wvv1b"]
+[ext_resource type="Texture2D" uid="uid://qwdxd1653e6e" path="res://Assets/Cannon/Cannon Ball Explosion/4.png" id="7_sbdb1"]
+[ext_resource type="Texture2D" uid="uid://cvnablb1ah3ws" path="res://Assets/Cannon/Cannon Ball Explosion/5.png" id="8_fcajn"]
+[ext_resource type="Texture2D" uid="uid://buqvamhf53x3a" path="res://Assets/Cannon/Cannon Ball Explosion/6.png" id="9_u6xxg"]
+[ext_resource type="Texture2D" uid="uid://c8egoh373oq5d" path="res://Assets/Cannon/Cannon Ball Explosion/7.png" id="10_04ua3"]
+[ext_resource type="Texture2D" uid="uid://b8iol58mu0yq2" path="res://Assets/Cannon/Cannon Ball Idle/1.png" id="11_y1ckd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ymtu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4fatq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2n3t6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l6f32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wvv1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sbdb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fcajn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u6xxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_04ua3")
+}],
+"loop": false,
+"name": &"Explosition",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_y1ckd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 20.0
+}]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_opfsn")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1ymtu")
+
+[node name="BulletCollideDelete" type="Node" parent="." node_paths=PackedStringArray("bullet", "bullet_damage")]
+script = ExtResource("2_t410k")
+bullet = NodePath("..")
+bullet_damage = NodePath("../BulletDamage")
+
+[node name="BulletDamage" type="Node" parent="."]
+script = ExtResource("3_tfmwf")
+
+[node name="CannonBallAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4fatq")
+animation = &"Idle"
+autoplay = "Idle"

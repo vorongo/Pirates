@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1xf2r80bgfht"]
+
+[ext_resource type="Script" path="res://Scripts/ui/options_button.gd" id="1_xp2y5"]
+[ext_resource type="PackedScene" uid="uid://ue2l2uj2702h" path="res://Scenes/ui/options.tscn" id="2_nocda"]
+[ext_resource type="Texture2D" uid="uid://di0qknpcap5fi" path="res://Assets/Sprites/Free/Menu/Buttons/Settings.png" id="3_5dlcu"]
+[ext_resource type="Texture2D" uid="uid://cdutwdvtrn6oj" path="res://Assets/Sprites/Free/Menu/Buttons/SettingsP.png" id="4_vmkij"]
+[ext_resource type="Texture2D" uid="uid://g6heirfym8xg" path="res://Assets/Sprites/Free/Menu/Buttons/SettingsH.png" id="5_njp77"]
+[ext_resource type="Texture2D" uid="uid://vgtg42lh1l3a" path="res://Assets/Sprites/Free/Menu/Buttons/Plate.png" id="5_sprbn"]
+[ext_resource type="AudioStream" uid="uid://cnx7wh14hx0lv" path="res://Assets/Sound/ui/button_klick.mp3" id="7_3qofa"]
+
+[sub_resource type="Animation" id="Animation_xl740"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x2b0d"]
+resource_name = "_on_button_mouse_entered"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-424, 12), Vector2(408, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pa6ky"]
+resource_name = "on_button_mouse_exited"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(408, 12), Vector2(-424, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cukv5"]
+_data = {
+"RESET": SubResource("Animation_xl740"),
+"_on_button_mouse_entered": SubResource("Animation_x2b0d"),
+"on_button_mouse_exited": SubResource("Animation_pa6ky")
+}
+
+[node name="Button" type="Node2D"]
+script = ExtResource("1_xp2y5")
+new_scene_path = ExtResource("2_nocda")
+
+[node name="Button" type="TextureButton" parent="."]
+offset_left = -9.99999
+offset_top = -9.99999
+offset_right = 11.0
+offset_bottom = 12.0
+scale = Vector2(10, 10)
+pivot_offset = Vector2(10.4, 10.4)
+texture_normal = ExtResource("3_5dlcu")
+texture_pressed = ExtResource("4_vmkij")
+texture_hover = ExtResource("5_njp77")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+position = Vector2(408, 12)
+scale = Vector2(10, 10.8571)
+texture = ExtResource("5_sprbn")
+
+[node name="Label" type="Label" parent="Sprite2D2"]
+anchors_preset = -1
+anchor_left = 0.0253969
+anchor_right = 10.8667
+offset_left = -31.6
+offset_top = -7.0
+offset_right = 2165.4
+offset_bottom = 675.0
+scale = Vector2(0.02, 0.02)
+theme_override_colors/font_color = Color(0.129412, 0.121569, 0.188235, 1)
+theme_override_font_sizes/font_size = 500
+text = "TEXT"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cukv5")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3qofa")
+bus = &"Ui"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_options_button_pressed"]
